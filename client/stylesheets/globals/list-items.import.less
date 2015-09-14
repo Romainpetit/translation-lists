@@ -3,12 +3,13 @@
     // Layout of list-item children
     .display(flex);
     .flex-wrap(wrap);
-    height: 3rem;
+    min-height: 3rem;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    transition: background-color 0.05s cubic-bezier(0.22, 0.61, 0.36, 1);
+    position: relative;
     .checkbox {
         .flex(0, 0, 44px);
+        min-height: 3rem;
+        height: auto;
         cursor: pointer;
     }
     input[type="text"] {
@@ -35,8 +36,12 @@
         }
     }
     .delete-item {
-        color: @color-medium-rare;
-        line-height: 3rem;
+        color: @color-well;
+        min-height: 3rem;
+        text-align: center;
+        line-height: 3.1rem;
+        top: 50%;
+        margin-top: -1.5rem;
         text-align: center;
         &:hover {
             color: @color-primary;
@@ -50,17 +55,20 @@
     }
     // Hover state
     &:hover {
-        background-color: rgba(0, 0, 0, 0.02);
-        transition: background-color 0.05s cubic-bezier(0.22, 0.61, 0.36, 1);
+        background-color: @color-full-lighter;
+
+        .checkbox input[type="checkbox"] + span:before {
+          opacity: 1;
+        }
     }
     // Border between list items
     & + .list-item {
-        border-top: 1px solid #f0f9fb;
+        border-top: 1px solid @color-full;
     }
     // Checked
     &.checked {
         input[type="text"] {
-            color: @color-medium-rare;
+            opacity: 0.6;
             text-decoration: line-through;
         }
         .delete-item {
